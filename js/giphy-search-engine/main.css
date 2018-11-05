@@ -2,13 +2,12 @@ body{
     width:80%;
     max-width:1024px;
     margin:0 auto;
-    background: black;
+   /* background: black; */
 }
 
 /* h1은 제목이기 때문에 1개만 사용 */
 h1{
     color:white;
-
 }
 
 .img-center{
