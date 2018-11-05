@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript 2</title>
+</head>
+<body>
+    <h1 id="hphk">Happy Hacking </h1>
+    <div>
+            <a id="a1" href="#">who said that</a> <!-- ankor tag 아무것도 하지 않겠다 #-->
+    </div>
+    <div>
+            <a id="a2" href="#">said what?</a>
+    </div>
+    <script>
+    
+    const h1 = document.querySelector('#hphk');
+    const a1 = document.querySelector('#a1');
+    const a2 = document.querySelector('#a2');
+
+    a1.addEventListener('click', () => {
+        h1.innerHTML = "Richard Stallman";
+    });
+
+    a2.addEventListener('click', () => {
+        h1.innerHTML = "Happy Hacking";
+    });
+    
+    </script>
+
+</body>
+</html>
