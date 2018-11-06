@@ -18,13 +18,12 @@ const UI = {
       const resetButton = document.querySelector("#js-reset");
       resetButton.addEventListener("click", () => {
         localStorage.clear();
-        sidebar.innerHTML = null;
+        UI.sidebar.innerHTML = null;
       });
     },
     /* 좌측 Playlist 세팅 */
     setPlayList: () => {
-      const sidebar = document.querySelector("#js-playlist");
-      sidebar.innerHTML = localStorage.getItem("playlist");
+      UI.sidebar.innerHTML = localStorage.getItem("playlist");
     },
     /* Sidebar 정의 */
     sidebar: document.querySelector('#js-playlist')
