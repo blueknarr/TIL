@@ -1,65 +1,87 @@
-const Joi = require('joi');
+//validation check
+const Joi = require('joi'); 
 const express = require('express');
 const app = express();
+
+//middleware function
 app.use(express.json());
 
 const users = [
-    { id: 1, name:'iphone', email:'iphone@apple.com', age:14},
-    { id: 2, name:'galaxy', email:'galaxy@samsung.com', age:44 },
-    { id: 3, name:'hongme', email:'hongme@huawei.com', age: 22 },
+  { id: 1, name: 'john', email: 'john@hphk.kr', age: 33 },
 ];
 
-//CRUD
-
-/* get all */
-app.get('/api/users', (req,res) => {
-    res.send(users);
+//get요청이 들어왔을때 메인페이지
+//path, anonymous function 바로 실행된다.
+app.get('/', (req, res) => {
+  res.send('HappyHacking');
 });
 
-/* get */
-app.get('/api/users/:id', (req,res) => {
-    const user = getUsers(users,parseInt(req.params.id));
-    
-    if(!user) res.status(404).send(`can't find id${req.params.id}`);
-
-    res.send(user);
+app.get('/api/users', (req, res) => {
+  res.send(users);
 });
 
-/* post */
-app.post('/api/users/',(req,res) => {     
+app.get('/api/users/:id', (req, res) => {
+  const user = getUser(users, parseInt(req.params.id));
+  if(!user) return res.status(404).send(`No User with id: ${req.params.id}`);
 
+  res.send(user);
 });
 
-/* put */
-app.put('api/users/:id', (req,res) => {
-    const user = getUsers(users,req.params.id);
+app.post('/api/users', (req, res) => {
+  const { error } = validateUser(req.body);
+  if(error) return res.status(400).send(error.message);
 
-    const result = validateUsers(req.body);
-    if(!result) res.status(404).send(`can't find id${req.params.id}`);
-    
-    const { error } = validateUsers(req.body);
-    if(result.error) res.status(400).send(result.error.message);
+  const { name, email, age } = req.body;
+  const user = {
+    id: users.length + 1,
+    name: name,
+    email: email,
+    age: age || null,
+  };
 
-    
+  users.push(user);
+  res.send(user);
 });
 
-/* delete */
-app.delete('api/users/',(req,res) => {
+app.put('/api/users/:id', (req, res) => {
+  const user = getUser(users, parseInt(req.params.id));
+  if(!user) return res.status(404).send(`No User with id: ${req.params.id}`);
 
+  const { error } = validateUser(req.body);
+  if(error) return res.status(400).send(error.message);
+
+  // user.name = req.body.name;
+  // user.email = req.body.email;
+  // user.age = req.body.age;
+  const { name, email, age } = req.body;
+  user.name = name;
+  user.email = email;
+  user.age = age;
+  res.send(user);
 });
 
-function validateUsers(user){
-    const schema = {
-        name: Joi.string().min(5).required(),
-        email: Joi.string().min(5).required(),
-        age: Joi.number().min(99).required()
-    }
-    return result = Joi.validate(user,schema);
+app.delete('/api/users/:id', (req, res) => {
+  const user = getUser(users, parseInt(req.params.id));
+  if(!user) return res.status(404).send(`No User with id: ${req.params.id}`);
+
+  const index = users.indexOf(user);
+  users.splice(index, 1);
+  res.send(user);
+});
+
+function getUser(users, id) {
+  return users.find(user => user.id === id);
 }
 
-function getUsers(users, id){
-    return users.find( (user) => user.id === id);
+function validateUser(user) {
+  const schema = {
+    name: Joi.string().required().min(1),
+    email: Joi.string().email().required().min(5).max(25),
+    age: Joi.number().min(3),
+  };
+
+  return Joi.validate(user, schema);
 }
 
-const port = process.env.port || 3000;
-app.listen(port, () => console.log(`listening ${port}`));
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`${port} (@ᐛ)و `));
