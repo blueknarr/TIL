@@ -1,0 +1,22 @@
+1. 하이퍼레저 패브릭 개요
+   - Permissioned and Private Blockchain (허가형 프라이빗 블록체인)
+   - MSP (Membership Service Provider) 
+     - 인증관리 시스템에 등록한 사용자만 참여 가능
+   - Channel
+     - 같은 채널의 데이터 사용 가능 
+     - 다른 채널로 분산원장 전송 불가
+   - Shared Ledger 
+     - World state - 원장의 현재 상태 (예: 통장의 현재 잔고)
+     - Blockchain - 원장의 전체 기록 (예: 통장의 전체 거래 내역)
+   - Chaincode (= 스마트 컨트랙트)
+     - 원장에 데이터 읽기/쓰기 가능
+     - System chaincode(시스템 체인코드)를 이용해 블록체인 시스템 설정 가능
+   - 특징
+     - 프라이버시와 기밀성
+     - 작업 구간별 병렬 처리
+     - 체이코드
+     - 모듈화된 디자인
+   - 3단계 데이터 처리 과정
+     - Execute - Transaction을 실행 -> 결과값을 검증
+     - Order - 실행 단계에서 검증이 끝난 Transaction을 취합 -> 순서에 맞게 정렬 -> 블록 생성
+     - Validation -  블록에 있는 Transaction의 결과값 검증 -> 디지털 인증서 확인 -> 최신 블록을 업데이트
