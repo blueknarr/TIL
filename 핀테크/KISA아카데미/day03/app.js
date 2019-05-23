@@ -1,7 +1,9 @@
 var express = require('express');
 var request = require('request');
 var mysql = require('mysql');
-
+var jwt = require('jsonwebtoken');
+var tokenKey = 'kisafintech';
+var auth = require('./lib/auth')
 var connection = mysql.createConnection({
     host : '127.0.0.1',
     user : 'root',
@@ -90,5 +92,49 @@ app.post('/join',function(req,res){
         }
     });
 });
+
+app.post('/login', function (req, res) {
+    var userEmail = req.body.email;
+    var userPassword = req.body.password;
+    console.log(userEmail, userPassword);
+    res.json('등록 정보 성공');
+
+    var sql = "SELECT * FROM user WHERE user_id = ?";
+    connection.query(sql, [userEmail], function (error, results) {
+      if (error) throw error;  
+      else {
+        console.log(results);
+        console.log(userPassword);
+        console.log(results[0].user_password);
+        if(userPassword == results[0].user_password){
+            jwt.sign(
+                {
+                    userName : results[0].name,
+                    userId : results[0].user_id
+                },
+                tokenKey,
+                {
+                    expiresIn : '1d',
+                    issuer : 'fintech.admin',
+                    subject : 'user.login.info'
+                },
+                function(err, token){
+                    console.log('로그인 성공', token)
+                    res.json(token)
+                }
+            )            
+        }
+        else {
+            res.json('등록정보가 없습니다');
+        }
+      }
+    });
+})
+
+//토큰 정보로 사용자 정보를 확인한다.
+app.get('/tokenTest',auth,function(req,res){
+    console.log('토큰테스트')
+    console.log(req.decoded);
+})
 
 app.listen(port);
