@@ -255,14 +255,6 @@
 
 
         $("#joinBtn").click(function(){
-            alert($("#nameInput").val());
-            alert($("#emailInput").val());
-            alert($("#birthInput").val());
-            alert($("#phoneInput").val());
-            alert($("#passwordInput").val());
-            alert($("#accessToken").val());
-            alert($("#refreshToken").val());
-            alert($("#userNum").val());
             $.ajax({
                 url:'http://localhost:8080/join',
                 type : 'POST',

@@ -3,6 +3,7 @@ var request = require('request');
 var mysql = require('mysql');
 var jwt = require('jsonwebtoken');
 var tokenKey = 'kisafintech';
+var cors = require('cors');
 var auth = require('./lib/auth')
 var connection = mysql.createConnection({
     host : '127.0.0.1',
@@ -12,7 +13,7 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 app = express();
-
+app.use(cors());
 //css 경로 지정
 app.use(express.static(__dirname + '/public'));
 
@@ -36,6 +37,25 @@ app.get('/',function(req, res){
 //join page
 app.get('/join',function(req, res){
     res.render('join');
+})
+
+//login page
+app.get('/login',function(req, res){
+    res.render('login');
+})
+
+//main page
+app.get('/main',function(req,res){
+    res.render('main');
+});
+
+app.get('/balance',function(req,res){
+    res.render('main');
+    
+})
+
+app.get('/balance',function(req,res){
+   
 })
 
 //토큰 받아오기
@@ -64,8 +84,6 @@ app.get('/authResult',function(req, res){
             console.log(accessRequestResult);
             res.render('resultChild',{data : accessRequestResult});
         }
-        
-        
     });
 })
 
@@ -97,7 +115,6 @@ app.post('/login', function (req, res) {
     var userEmail = req.body.email;
     var userPassword = req.body.password;
     console.log(userEmail, userPassword);
-    res.json('등록 정보 성공');
 
     var sql = "SELECT * FROM user WHERE user_id = ?";
     connection.query(sql, [userEmail], function (error, results) {
@@ -109,6 +126,7 @@ app.post('/login', function (req, res) {
         if(userPassword == results[0].user_password){
             jwt.sign(
                 {
+                    //토큰 발행할태 아이디와 이름을 넣어줬다
                     userName : results[0].name,
                     userId : results[0].user_id
                 },
@@ -119,7 +137,6 @@ app.post('/login', function (req, res) {
                     subject : 'user.login.info'
                 },
                 function(err, token){
-                    console.log('로그인 성공', token)
                     res.json(token)
                 }
             )            
@@ -130,6 +147,36 @@ app.post('/login', function (req, res) {
       }
     });
 })
+
+//user 가져오기
+app.post('/getUser', auth, function(req, res){
+    var userId = req.decoded.userId;
+    console.log(userId);
+    var sql = "SELECT userNum, accessToken FROM user WHERE user_id = ?";
+    connection.query(sql,[userId], function(err, result){
+        if(err){
+            console.error(err);
+            throw err;
+        }
+        else {
+            var option = {
+                method : "GET",
+                url :'https://testapi.open-platform.or.kr/user/me?user_seq_no='+ result[0].userNum,
+                headers : {
+                    'Authorization' : 'Bearer ' + result[0].accessToken
+                }
+            };
+            request(option, function(err, response, body){
+                if(err) throw err;
+                else {
+                    console.log(body);
+                    res.json(JSON.parse(body));
+                }
+            })
+        }
+    })
+})
+
 
 //토큰 정보로 사용자 정보를 확인한다.
 app.get('/tokenTest',auth,function(req,res){
