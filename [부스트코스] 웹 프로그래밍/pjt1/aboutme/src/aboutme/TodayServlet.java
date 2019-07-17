@@ -21,12 +21,13 @@ public class TodayServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LocalDateTime now = LocalDateTime.now();
-		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/M/d h:m");
-		String nowString = now.format(dateTimeFormatter);
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/M/d HH:mm");
+		String currentTime = now.format(dateTimeFormatter);
+		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print("<a href=\"index.html\">main</a><br>");
-		out.print("<h1>현재시간: "+ nowString + "</h1>");
+		out.print("<h1>현재시간: "+ currentTime + "</h1>");
 	}
 
 }
