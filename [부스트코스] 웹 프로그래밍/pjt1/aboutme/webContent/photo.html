@@ -2,9 +2,147 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
 </head>
-<body>
+<style>
+#container{
+  	position:relative;
+	width:1210px;
+	height:800px;
+	left:350px;
+	background-color:#D3D3D3;
+}
 
+nav{
+    position:relative;
+    top:10px;
+    margin-left:10px;
+	width:1190px;
+	height:80px;
+	background-color:#FFFFFF;
+}
+
+.menu_navbar{
+    position:relative;
+    margin-top:18px;
+    margin-left:20px;
+    left:630px;
+    float:left;
+	width:110px;
+	height:40px;
+    text-align:center;
+	background-color:#8DBAC6;
+	display:inline;
+	border: 1px solid gray;
+}
+
+.menu_navbar > a{
+   display:block;
+   width:80px;
+   padding:8px;
+   margin:5px 0px;
+}
+
+.menu_index{
+    width: 200px;
+    height: 200px;
+	background-color:#8DBAC6;
+	display:inline;
+	border: 1px solid gray;
+}
+
+section{
+    position:relative;
+    top:10px;
+    width:1190px;
+	height:600px; 
+    margin:10px;
+  	background-color:#FFFFFF;
+}
+
+section > div {
+  position:relative;
+  top:20px;
+}
+
+footer{
+    position:relative;
+    top:10px;
+    margin:10px;
+  	width:1190px;
+	height:80px;
+	background-color:#FFFFFF;
+}
+
+footer > div{
+  position:relative;
+  width:200px;
+  height:25px;
+  top:13px;
+  margin-left:510px;
+  color:gray;
+  text-align:center;
+}
+
+.content{
+	position:relative;
+	display:inline;
+	width: 400px;   
+	height: 250px;
+}
+
+.my_pic{
+	width:180px;
+	height:180px;
+}
+
+</style>
+<body>
+<div id="container">
+	<nav>
+		<div class="menu_navbar">
+			<a href="index.html">홈</a>
+		</div>
+		<div class="menu_navbar">
+			<a href="aboutme.html">자기소개</a>
+		</div>
+		<div class="menu_navbar">
+			<a href="photo.html">내사진</a>
+		</div>
+		<div class="menu_navbar">
+			<a href="today">몇시에요</a>
+		</div>
+	</nav>
+	<section>
+		<div class="content_photo">
+			<div class="content">
+				<img class="my_pic" src="img/crong.jpg">
+			</div>
+			<div class="content">
+				<div class="txt_diary">2001.03.11</div>
+				<div class="txt_diary">제가 크롱일때 찍은 사진입니다.</div>
+				<div class="txt_diary">이때는 뽀로로의 집에서 신나게 놀던 때 입니다.</div>
+			</div>
+		</div>
+		<div class="content_photo">
+			<div class="content">
+				<img class="my_pic" src="img/simpson.jpg">
+			</div>
+			<div class="content">
+				<div class="txt_diary">2001.03.11</div>
+				<div class="txt_diary">결혼한 후에는 이런 모습이네요...@@</div>
+				<div class="txt_diary">
+					Lorem ipsum dolor sit amet, consectetur adisicing elit, Eum corporis,
+					eaque quasi nobis non sapiente quas et, sed, ipsa voluptate earum porro
+					ipsum ut quod natus unde ea inciduntl Temporibus.
+				</div>
+			</div>		
+		</div>
+	</section>
+	<footer>
+		<div>crong@codesquad.kr</div>
+		<div>http://github.com/crong</div>
+	</footer>
+</div>
 </body>
 </html>
