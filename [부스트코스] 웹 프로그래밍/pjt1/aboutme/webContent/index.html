@@ -2,9 +2,172 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
 </head>
+<style>
+#container{
+  	position:relative;
+	width:1210px;
+	height:800px;
+	left:350px;
+	background-color:#D3D3D3;
+}
+
+nav{
+    position:relative;
+    top:10px;
+    margin-left:10px;
+	width:1190px;
+	height:80px;
+	background-color:#FFFFFF;
+}
+
+.menu_navbar{
+    position:relative;
+    margin-top:18px;
+    margin-left:20px;
+    left:630px;
+    float:left;
+	width:110px;
+	height:40px;
+    text-align:center;
+	background-color:#8DBAC6;
+	display:inline;
+	border: 1px solid gray;
+}
+
+.menu_navbar > a{
+   display:block;
+   width:80px;
+   padding:8px;
+   margin:5px 0px;
+}
+
+section{
+    position:relative;
+    top:10px;
+    width:1190px;
+	height:600px; 
+    margin:10px;
+  	background-color:#FFFFFF;
+}
+
+section > div {
+  position:relative;
+  top:20px;
+}
+
+#txt_job{
+  	height:50px;
+	font-size:30px;
+	font-weight:bold;
+	text-align:center;
+}
+
+.txt_index > span{
+	font-size:15px;
+	font-weight:bold;
+	text-align:center;
+	display:block;
+	margin:0px;
+}
+
+#navbar_section{
+    height: 110px;
+}
+
+#navbar_section > div{
+    position:relative;
+    width: 90px;
+    height: 90px;
+	background-color:#8DBAC6;
+	display:inline;
+	border: 1px solid gray;
+	color:#FFFFFF;
+	float:left;
+	text-align:center;
+	margin-top:10px;
+	margin-left:30px;
+	left:450px;
+}
+
+#navbar_section > a {
+	display:block;
+	margin-top:20px;
+	color:#FFFFFF;
+}
+
+#container_img{
+    position:relative;
+	top:30px;
+	width:500px;
+	height:350px;
+	margin:0 auto;
+}
+#img_map{
+	width:500px;
+	height:350px;
+	border: 1px solid lightgray;
+}
+
+footer{
+    position:relative;
+    top:10px;
+    margin:10px;
+  	width:1190px;
+	height:80px;
+	background-color:#FFFFFF;
+}
+
+footer > div{
+  position:relative;
+  width:200px;
+  height:25px;
+  top:13px;
+  margin-left:510px;
+  color:gray;
+  text-align:center;
+}
+</style>
 <body>
-<h1>about me</h1>
+<div id="container">
+	<nav>
+		<div class="menu_navbar">
+			<a href="index.html">홈</a>
+		</div>
+		<div class="menu_navbar">
+			<a href="aboutme.html">자기소개</a>
+		</div>
+		<div class="menu_navbar">
+			<a href="photo.html">내사진</a>
+		</div>
+		<div class="menu_navbar">
+			<a href="today">몇시에요</a>
+		</div>
+	</nav>
+	<section>
+		<div id="txt_job">웹프론트엔드 개발자~! crong</div>
+		<div class="txt_index">
+			<span>함께 개발하고 같이 성장하고 싶어요.</span>
+			<span>경기도 판교에 어딘가 살고 있어요!</span>
+		</div>
+		<div id="navbar_section">
+			<div>
+				<a href="aboutme.html">자기소개</a>
+			</div>
+			<div>
+				<a href="photo.html">내사진</a>
+			</div>
+		</div>
+		
+        <div id="container_img">
+		  <img id="img_map" src="img/map.JPG" align="middle">
+        </div>
+	</section>
+	<footer>
+		<div>crong@codesquad.kr</div>
+		<div>http://github.com/crong</div>
+	</footer>
+</div>
 </body>
 </html>
