@@ -2,9 +2,152 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
 </head>
-<body>
+<style>
+#container{
+  	position:relative;
+	width:1210px;
+	height:800px;
+	left:350px;
+	background-color:#D3D3D3;
+}
 
+nav{
+    position:relative;
+    top:10px;
+    margin-left:10px;
+	width:1190px;
+	height:80px;
+	background-color:#FFFFFF;
+}
+
+.menu_navbar{
+    position:relative;
+    margin-top:18px;
+    margin-left:20px;
+    left:630px;
+    float:left;
+	width:110px;
+	height:40px;
+    text-align:center;
+	background-color:#8DBAC6;
+	display:inline;
+	border: 1px solid gray;
+}
+
+.menu_navbar > a{
+   display:block;
+   width:80px;
+   padding:8px;
+   margin:5px 0px;
+}
+
+footer{
+    position:relative;
+    top:10px;
+    margin:10px;
+  	width:1190px;
+	height:80px;
+	background-color:#FFFFFF;
+}
+
+footer > div{
+  position:relative;
+  width:200px;
+  height:25px;
+  top:13px;
+  margin-left:510px;
+  color:gray;
+  text-align:center;
+}
+
+section{
+    position:relative;
+    top:10px;
+    width:1190px;
+	height:600px; 
+    margin:10px;
+  	background-color:#FFFFFF;
+}
+
+section > div {
+  position:relative;
+  top:80px;
+  left:160px;
+}
+
+.content_aboutme{
+	position:relative;
+	height:150px;
+	margin:0 auto;
+}
+
+.txt_title{
+	font-weight:bold;
+	font-size:25px;
+}
+
+.txt_content{
+	display:block;
+	width:900px;
+}
+
+</style>
+<body>
+<div id="container">
+	<nav>
+		<div class="menu_navbar">
+			<a href="index.html">홈</a>
+		</div>
+		<div class="menu_navbar">
+			<a href="aboutme.html">자기소개</a>
+		</div>
+		<div class="menu_navbar">
+			<a href="photo.html">내사진</a>
+		</div>
+		<div class="menu_navbar">
+			<a href="today">몇시에요</a>
+		</div>
+	</nav>
+	<section>
+		<div class="content_aboutme">
+			<div class="txt_title">이런 것을 잘해요?</div>
+			   <div class="txt_content">
+				Lorem ipsum dolor sit amet, consectetur adipisicing Blanditiis voluptas doloribus rerum, 
+			    molestiae qui earum omnis illo impedit minus dolor asperirores sapiente obcaecati reprehenderit 
+			    vero odio ipsam consectetur, perferendis sit! Lorem ipsum olor si amet, consectetur adipisicing elit. 
+			    Ex ipsa elgendi reiciendis fugiat necessitatibus magni, maiores fuga sapiente ullam quaerat officia 
+			    labore nisi repellendus ratione voluptatibus, magnam quam id? Quisquam.
+			   </div>
+		</div>
+		<div class="content_aboutme">
+			<div class="txt_title">나의 포트폴리오</div>
+			<div>
+				<a class="txt_content" href="">www.my.com</a>
+			</div>
+			<div class="txt_content">제 홈페이지 입니다. 이곳에서 많은 개발 코드를 볼 수 있습니다.</div>
+			<div>
+				<a class="txt_content" href="">github.com/crong</a>
+			</div>
+			<div class="txt_content">제가 주로 개발하는 소스코드입니다. 이곳에서 많은 부분을 확인할 수 있습니다.</div>
+		</div>
+		<div class="content_aboutme">
+			<div class="txt_title">나의 최근 프로젝트 설명</div>
+			<div class="txt_content">
+				최근 만든 프로젝트는 xxx입니다. um.js라는 자바스크립트 라이브러리를 활용한 비동기 프로그램을 구현했습니다.
+				Lorem ipsum dolor sit amet, consectetur adipisicing Blanditiis voluptas doloribus rerum, 
+			    molestiae qui earum omnis illo impedit minus dolor asperirores sapiente obcaecati reprehenderit 
+			    vero odio ipsam consectetur, perferendis sit! Lorem ipsum olor si amet, consectetur adipisicing elit. 
+			    Ex ipsa elgendi reiciendis fugiat necessitatibus magni, maiores fuga sapiente ullam quaerat officia 
+			    labore nisi repellendus ratione voluptatibus, magnam quam id? Quisquam.
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div>crong@codesquad.kr</div>
+		<div>http://github.com/crong</div>
+	</footer>
+</div>
 </body>
 </html>
